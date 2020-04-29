@@ -1,4 +1,4 @@
-import $ivy.`io.7mind.izumi.sbt::sbtgen:0.0.55`
+import $ivy.`io.7mind.izumi.sbt::sbtgen:0.0.56`
 import izumi.sbtgen._
 import izumi.sbtgen.model._
 
@@ -55,7 +55,7 @@ object Izumi {
     scalaJsVersion = PV.scala_js_version,
     scalaNativeVersion = PV.scala_native_version,
     crossProjectVersion = PV.crossproject_version,
-    bundlerVersion = PV.scalajs_bundler_version,
+    bundlerVersion = Some(PV.scalajs_bundler_version),
   )
 
   object Deps {
@@ -131,7 +131,7 @@ object Izumi {
 
   // DON'T REMOVE, these variables are read from CI build (build.sh)
   final val scala212 = ScalaVersion("2.12.11")
-  final val scala213 = ScalaVersion("2.13.1")
+  final val scala213 = ScalaVersion("2.13.2")
 
   object Groups {
     final val fundamentals = Set(Group("fundamentals"))
@@ -142,9 +142,9 @@ object Izumi {
   }
 
   object Targets {
-    // switch order to use 2.13 in IDEA
-    val targetScala = Seq(scala212, scala213)
-//    val targetScala = Seq(scala213, scala212)
+    // switch order to use 2.12 in IDEA
+//    val targetScala = Seq(scala212, scala213)
+    val targetScala = Seq(scala213, scala212)
     private val jvmPlatform = PlatformEnv(
       platform = Platform.Jvm,
       language = targetScala,
@@ -654,7 +654,6 @@ object Izumi {
     globalLibs = Seq(
       ScopedLibrary(projector, FullDependencyScope(Scope.Compile, Platform.All), compilerPlugin = true),
       ScopedLibrary(silencer_plugin, FullDependencyScope(Scope.Compile, Platform.All), compilerPlugin = true),
-      silencer_lib in Scope.Provided.all,
       collection_compat in Scope.Compile.all,
       scalatest,
     ),

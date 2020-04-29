@@ -12,7 +12,6 @@ lazy val `fundamentals-collections` = project.in(file("fundamentals/fundamentals
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test
     )
@@ -67,7 +66,7 @@ lazy val `fundamentals-collections` = project.in(file("fundamentals/fundamentals
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -87,7 +86,7 @@ lazy val `fundamentals-collections` = project.in(file("fundamentals/fundamentals
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -95,8 +94,8 @@ lazy val `fundamentals-collections` = project.in(file("fundamentals/fundamentals
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -109,7 +108,6 @@ lazy val `fundamentals-platform` = project.in(file("fundamentals/fundamentals-pl
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
@@ -173,7 +171,7 @@ lazy val `fundamentals-platform` = project.in(file("fundamentals/fundamentals-pl
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -193,7 +191,7 @@ lazy val `fundamentals-platform` = project.in(file("fundamentals/fundamentals-pl
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -201,8 +199,8 @@ lazy val `fundamentals-platform` = project.in(file("fundamentals/fundamentals-pl
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -212,7 +210,6 @@ lazy val `fundamentals-functional` = project.in(file("fundamentals/fundamentals-
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test
     )
@@ -267,7 +264,7 @@ lazy val `fundamentals-functional` = project.in(file("fundamentals/fundamentals-
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -287,7 +284,7 @@ lazy val `fundamentals-functional` = project.in(file("fundamentals/fundamentals-
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -295,8 +292,8 @@ lazy val `fundamentals-functional` = project.in(file("fundamentals/fundamentals-
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -306,7 +303,6 @@ lazy val `fundamentals-thirdparty-boopickle-shaded` = project.in(file("fundament
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
@@ -371,7 +367,7 @@ lazy val `fundamentals-thirdparty-boopickle-shaded` = project.in(file("fundament
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -391,7 +387,7 @@ lazy val `fundamentals-thirdparty-boopickle-shaded` = project.in(file("fundament
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -399,8 +395,8 @@ lazy val `fundamentals-thirdparty-boopickle-shaded` = project.in(file("fundament
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -415,7 +411,6 @@ lazy val `fundamentals-reflection` = project.in(file("fundamentals/fundamentals-
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
@@ -471,7 +466,7 @@ lazy val `fundamentals-reflection` = project.in(file("fundamentals/fundamentals-
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -491,7 +486,7 @@ lazy val `fundamentals-reflection` = project.in(file("fundamentals/fundamentals-
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -499,8 +494,8 @@ lazy val `fundamentals-reflection` = project.in(file("fundamentals/fundamentals-
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -510,7 +505,6 @@ lazy val `fundamentals-bio` = project.in(file("fundamentals/fundamentals-bio"))
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats % Optional,
@@ -568,7 +562,7 @@ lazy val `fundamentals-bio` = project.in(file("fundamentals/fundamentals-bio"))
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -588,7 +582,7 @@ lazy val `fundamentals-bio` = project.in(file("fundamentals/fundamentals-bio"))
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -596,8 +590,8 @@ lazy val `fundamentals-bio` = project.in(file("fundamentals/fundamentals-bio"))
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -612,7 +606,6 @@ lazy val `fundamentals-json-circe` = project.in(file("fundamentals/fundamentals-
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "io.circe" %% "circe-core" % V.circe,
@@ -673,7 +666,7 @@ lazy val `fundamentals-json-circe` = project.in(file("fundamentals/fundamentals-
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -693,7 +686,7 @@ lazy val `fundamentals-json-circe` = project.in(file("fundamentals/fundamentals-
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -701,8 +694,8 @@ lazy val `fundamentals-json-circe` = project.in(file("fundamentals/fundamentals-
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -719,7 +712,6 @@ lazy val `distage-core-api` = project.in(file("distage/distage-core-api"))
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats % Optional,
@@ -778,7 +770,7 @@ lazy val `distage-core-api` = project.in(file("distage/distage-core-api"))
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -798,7 +790,7 @@ lazy val `distage-core-api` = project.in(file("distage/distage-core-api"))
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -806,8 +798,8 @@ lazy val `distage-core-api` = project.in(file("distage/distage-core-api"))
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -820,7 +812,6 @@ lazy val `distage-core-proxy-cglib` = project.in(file("distage/distage-core-prox
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "cglib" % "cglib-nodep" % V.cglib_nodep
@@ -876,7 +867,7 @@ lazy val `distage-core-proxy-cglib` = project.in(file("distage/distage-core-prox
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -896,7 +887,7 @@ lazy val `distage-core-proxy-cglib` = project.in(file("distage/distage-core-prox
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -904,8 +895,8 @@ lazy val `distage-core-proxy-cglib` = project.in(file("distage/distage-core-prox
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -919,7 +910,6 @@ lazy val `distage-core` = project.in(file("distage/distage-core"))
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats % Test,
@@ -977,7 +967,7 @@ lazy val `distage-core` = project.in(file("distage/distage-core"))
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -997,7 +987,7 @@ lazy val `distage-core` = project.in(file("distage/distage-core"))
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1005,8 +995,8 @@ lazy val `distage-core` = project.in(file("distage/distage-core"))
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1020,7 +1010,6 @@ lazy val `distage-extension-config` = project.in(file("distage/distage-extension
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "com.github.pureconfig" %% "pureconfig-magnolia" % V.pureconfig,
@@ -1078,7 +1067,7 @@ lazy val `distage-extension-config` = project.in(file("distage/distage-extension
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1098,7 +1087,7 @@ lazy val `distage-extension-config` = project.in(file("distage/distage-extension
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1106,8 +1095,8 @@ lazy val `distage-extension-config` = project.in(file("distage/distage-extension
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1123,7 +1112,6 @@ lazy val `distage-extension-plugins` = project.in(file("distage/distage-extensio
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "io.github.classgraph" % "classgraph" % V.classgraph
@@ -1179,7 +1167,7 @@ lazy val `distage-extension-plugins` = project.in(file("distage/distage-extensio
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1199,7 +1187,7 @@ lazy val `distage-extension-plugins` = project.in(file("distage/distage-extensio
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1207,8 +1195,8 @@ lazy val `distage-extension-plugins` = project.in(file("distage/distage-extensio
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1224,7 +1212,6 @@ lazy val `distage-extension-logstage` = project.in(file("distage/distage-extensi
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test
     )
@@ -1279,7 +1266,7 @@ lazy val `distage-extension-logstage` = project.in(file("distage/distage-extensi
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1299,7 +1286,7 @@ lazy val `distage-extension-logstage` = project.in(file("distage/distage-extensi
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1307,8 +1294,8 @@ lazy val `distage-extension-logstage` = project.in(file("distage/distage-extensi
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1321,7 +1308,6 @@ lazy val `distage-framework-api` = project.in(file("distage/distage-framework-ap
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test
     )
@@ -1376,7 +1362,7 @@ lazy val `distage-framework-api` = project.in(file("distage/distage-framework-ap
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1396,7 +1382,7 @@ lazy val `distage-framework-api` = project.in(file("distage/distage-framework-ap
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1404,8 +1390,8 @@ lazy val `distage-framework-api` = project.in(file("distage/distage-framework-ap
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1423,7 +1409,6 @@ lazy val `distage-framework` = project.in(file("distage/distage-framework"))
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats % Optional,
@@ -1482,7 +1467,7 @@ lazy val `distage-framework` = project.in(file("distage/distage-framework"))
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1502,7 +1487,7 @@ lazy val `distage-framework` = project.in(file("distage/distage-framework"))
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1510,8 +1495,8 @@ lazy val `distage-framework` = project.in(file("distage/distage-framework"))
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1528,7 +1513,6 @@ lazy val `distage-framework-docker` = project.in(file("distage/distage-framework
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats % Test,
@@ -1587,7 +1571,7 @@ lazy val `distage-framework-docker` = project.in(file("distage/distage-framework
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1607,7 +1591,7 @@ lazy val `distage-framework-docker` = project.in(file("distage/distage-framework
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1615,8 +1599,8 @@ lazy val `distage-framework-docker` = project.in(file("distage/distage-framework
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1632,7 +1616,6 @@ lazy val `distage-testkit-core` = project.in(file("distage/distage-testkit-core"
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats % Optional,
@@ -1690,7 +1673,7 @@ lazy val `distage-testkit-core` = project.in(file("distage/distage-testkit-core"
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1710,7 +1693,7 @@ lazy val `distage-testkit-core` = project.in(file("distage/distage-testkit-core"
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1718,8 +1701,8 @@ lazy val `distage-testkit-core` = project.in(file("distage/distage-testkit-core"
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1734,7 +1717,6 @@ lazy val `distage-testkit-scalatest` = project.in(file("distage/distage-testkit-
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats % Optional,
@@ -1794,7 +1776,7 @@ lazy val `distage-testkit-scalatest` = project.in(file("distage/distage-testkit-
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1814,7 +1796,7 @@ lazy val `distage-testkit-scalatest` = project.in(file("distage/distage-testkit-
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1822,8 +1804,8 @@ lazy val `distage-testkit-scalatest` = project.in(file("distage/distage-testkit-
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1837,7 +1819,6 @@ lazy val `logstage-core` = project.in(file("logstage/logstage-core"))
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
@@ -1896,7 +1877,7 @@ lazy val `logstage-core` = project.in(file("logstage/logstage-core"))
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -1916,7 +1897,7 @@ lazy val `logstage-core` = project.in(file("logstage/logstage-core"))
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -1924,8 +1905,8 @@ lazy val `logstage-core` = project.in(file("logstage/logstage-core"))
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -1939,7 +1920,6 @@ lazy val `logstage-rendering-circe` = project.in(file("logstage/logstage-renderi
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test
     )
@@ -1994,7 +1974,7 @@ lazy val `logstage-rendering-circe` = project.in(file("logstage/logstage-renderi
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -2014,7 +1994,7 @@ lazy val `logstage-rendering-circe` = project.in(file("logstage/logstage-renderi
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -2022,8 +2002,8 @@ lazy val `logstage-rendering-circe` = project.in(file("logstage/logstage-renderi
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -2036,7 +2016,6 @@ lazy val `logstage-adapter-slf4j` = project.in(file("logstage/logstage-adapter-s
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.slf4j" % "slf4j-api" % V.slf4j
@@ -2095,7 +2074,7 @@ lazy val `logstage-adapter-slf4j` = project.in(file("logstage/logstage-adapter-s
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -2115,7 +2094,7 @@ lazy val `logstage-adapter-slf4j` = project.in(file("logstage/logstage-adapter-s
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -2123,8 +2102,8 @@ lazy val `logstage-adapter-slf4j` = project.in(file("logstage/logstage-adapter-s
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -2138,7 +2117,6 @@ lazy val `logstage-sink-slf4j` = project.in(file("logstage/logstage-sink-slf4j")
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.slf4j" % "slf4j-api" % V.slf4j,
@@ -2195,7 +2173,7 @@ lazy val `logstage-sink-slf4j` = project.in(file("logstage/logstage-sink-slf4j")
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -2215,7 +2193,7 @@ lazy val `logstage-sink-slf4j` = project.in(file("logstage/logstage-sink-slf4j")
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -2223,8 +2201,8 @@ lazy val `logstage-sink-slf4j` = project.in(file("logstage/logstage-sink-slf4j")
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .disablePlugins(AssemblyPlugin)
@@ -2258,7 +2236,6 @@ lazy val `microsite` = project.in(file("doc/microsite"))
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test,
       "org.typelevel" %% "cats-core" % V.cats,
@@ -2369,7 +2346,7 @@ lazy val `microsite` = project.in(file("doc/microsite"))
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -2389,7 +2366,7 @@ lazy val `microsite` = project.in(file("doc/microsite"))
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -2397,8 +2374,8 @@ lazy val `microsite` = project.in(file("doc/microsite"))
     } },
     scalaVersion := crossScalaVersions.value.head,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     )
   )
   .enablePlugins(ScalaUnidocPlugin, ParadoxSitePlugin, SitePlugin, GhpagesPlugin, ParadoxMaterialThemePlugin, PreprocessPlugin, MdocPlugin)
@@ -2409,7 +2386,6 @@ lazy val `sbt-izumi-deps` = project.in(file("sbt-plugins/sbt-izumi-deps"))
     libraryDependencies ++= Seq(
       compilerPlugin("org.typelevel" % "kind-projector" % V.kind_projector cross CrossVersion.full),
       compilerPlugin("com.github.ghik" % "silencer-plugin" % V.silencer cross CrossVersion.full),
-      "com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
       "org.scala-lang.modules" %% "scala-collection-compat" % V.collection_compat,
       "org.scalatest" %% "scalatest" % V.scalatest % Test
     )
@@ -2466,7 +2442,7 @@ lazy val `sbt-izumi-deps` = project.in(file("sbt-plugins/sbt-izumi-deps"))
         "-Ycache-plugin-class-loader:always",
         "-Ycache-macro-class-loader:last-modified"
       )
-      case (_, "2.13.1") => Seq(
+      case (_, "2.13.2") => Seq(
         "-Xlint:_,-eta-sam",
         "-Ybackend-parallelism",
         math.min(16, math.max(1, sys.runtime.availableProcessors() - 1)).toString,
@@ -2486,7 +2462,7 @@ lazy val `sbt-izumi-deps` = project.in(file("sbt-plugins/sbt-izumi-deps"))
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
-      case (false, "2.13.1") => Seq(
+      case (false, "2.13.2") => Seq(
         "-opt:l:inline",
         "-opt-inline-from:izumi.**"
       )
@@ -2536,8 +2512,8 @@ lazy val `distage` = (project in file(".agg/distage-distage"))
   .settings(
     skip in publish := true,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     ),
     scalaVersion := crossScalaVersions.value.head
   )
@@ -2560,8 +2536,8 @@ lazy val `distage-jvm` = (project in file(".agg/distage-distage-jvm"))
   .settings(
     skip in publish := true,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     ),
     scalaVersion := crossScalaVersions.value.head
   )
@@ -2584,8 +2560,8 @@ lazy val `logstage` = (project in file(".agg/logstage-logstage"))
   .settings(
     skip in publish := true,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     ),
     scalaVersion := crossScalaVersions.value.head
   )
@@ -2601,8 +2577,8 @@ lazy val `logstage-jvm` = (project in file(".agg/logstage-logstage-jvm"))
   .settings(
     skip in publish := true,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     ),
     scalaVersion := crossScalaVersions.value.head
   )
@@ -2618,8 +2594,8 @@ lazy val `doc` = (project in file(".agg/doc-doc"))
   .settings(
     skip in publish := true,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     ),
     scalaVersion := crossScalaVersions.value.head
   )
@@ -2632,8 +2608,8 @@ lazy val `doc-jvm` = (project in file(".agg/doc-doc-jvm"))
   .settings(
     skip in publish := true,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     ),
     scalaVersion := crossScalaVersions.value.head
   )
@@ -2664,8 +2640,8 @@ lazy val `izumi-jvm` = (project in file(".agg/.agg-jvm"))
   .settings(
     skip in publish := true,
     crossScalaVersions := Seq(
-      "2.12.11",
-      "2.13.1"
+      "2.13.2",
+      "2.12.11"
     ),
     scalaVersion := crossScalaVersions.value.head
   )
@@ -2709,7 +2685,7 @@ lazy val `izumi` = (project in file("."))
       s"-Xmacro-settings:sbt-version=${sbtVersion.value}"
     ),
     crossScalaVersions := Nil,
-    scalaVersion := "2.12.11",
+    scalaVersion := "2.13.2",
     organization in ThisBuild := "io.7mind.izumi",
     sonatypeProfileName := "io.7mind",
     sonatypeSessionName := s"[sbt-sonatype] ${name.value} ${version.value} ${java.util.UUID.randomUUID}",
