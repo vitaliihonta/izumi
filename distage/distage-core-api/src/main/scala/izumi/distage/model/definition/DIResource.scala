@@ -765,17 +765,16 @@ object DIResource {
     implicit def ev: R0 <:< DIResourceBase[F[R, E, ?], A]
     implicit def resourceTag: ResourceTag[DIResourceBase[F[Any, E, ?], A]]
   }
-  import scala.annotation.unchecked.{uncheckedVariance => v}
   object TrifunctorHasResourceTag extends TrifunctorHasResourceTagLowPriority {
 
-    implicit def trifunctorResourceTag[R1 <: DIResourceBase[F0[R0, E0, ?], A0], F0[_, _, _]: TagK3, R0: HasConstructor, E0: Tag, A0 <: A1: Tag, A1]
+    implicit def trifunctorResourceTag[R1 <: DIResourceBase[F0[R0, E0, ?], A0], F0[-_, +_, +_]: TagK3, R0: HasConstructor, E0: Tag, A0 <: A1: Tag, A1]
     : TrifunctorHasResourceTag[R1 with DIResourceBase[F0[R0, E0, ?], A0], A1] {
       type R = R0
       type E = E0
       type A = A0
-      type F[-RR, +EE, +AA] = F0[RR @v, EE @v, AA @v]
+      type F[-RR, +EE, +AA] = F0[RR , EE , AA ]
     } = new TrifunctorHasResourceTag[R1, A1] { self =>
-      type F[-RR, +EE, +AA] = F0[RR @v, EE @v, AA @v]
+      type F[-RR, +EE, +AA] = F0[RR , EE , AA ]
       type R = R0
       type E = E0
       type A = A0
@@ -793,12 +792,12 @@ object DIResource {
     }
   }
   sealed trait TrifunctorHasResourceTagLowPriority extends TrifunctorHasResourceTagLowPriority1 {
-    implicit def trifunctorResourceTagNothing[R1 <: DIResourceBase[F0[R0, Nothing, ?], A0], F0[_, _, _]: TagK3, R0: HasConstructor, A0 <: A1: Tag, A1]
+    implicit def trifunctorResourceTagNothing[R1 <: DIResourceBase[F0[R0, Nothing, ?], A0], F0[-_, +_, +_]: TagK3, R0: HasConstructor, A0 <: A1: Tag, A1]
     : TrifunctorHasResourceTag[R1 with DIResourceBase[F0[R0, Nothing, ?], A0], A1] {
       type R = R0
       type E = Nothing
       type A = A0
-      type F[-RR, +EE, +AA] = F0[RR @v, EE @v, AA @v] @v
+      type F[-RR, +EE, +AA] = F0[RR , EE , AA]
     } = TrifunctorHasResourceTag.trifunctorResourceTag[R1, F0, R0, Nothing, A0, A1]
   }
   sealed trait TrifunctorHasResourceTagLowPriority1 {
