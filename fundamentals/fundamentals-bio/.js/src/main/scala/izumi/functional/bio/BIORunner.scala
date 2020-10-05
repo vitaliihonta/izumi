@@ -4,7 +4,7 @@ package izumi.functional.bio
 trait BIORunner[F[_, _]]
 
 object BIORunner {
-  @inline def apply[F[_, _]](implicit ev: BIORunner[F]): BIORunner[F] = ev
+  @inline def apply[F[_, _]](implicit ev: UnsafeRun2[F]): UnsafeRun2[F] = ev
 
-  implicit def anyBIORunner[F[_, _]]: BIORunner[F] = new BIORunner[F] {}
+  implicit def anyBIORunner[F[_, _]]: UnsafeRun2[F] = new UnsafeRun2[F] {}
 }
