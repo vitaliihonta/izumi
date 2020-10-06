@@ -3,6 +3,8 @@ package izumi.functional
 import izumi.functional.bio.syntax.{Syntax2, Syntax3}
 import izumi.functional.mono.{Clock, Entropy, SyncSafe}
 
+import scala.language.implicitConversions
+
 /**
   *  Current hierarchy (use http://www.nomnoml.com/ to render, rendered: https://izumi.7mind.io/bio/media/bio-relationship-hierarchy.svg)
   *
@@ -142,6 +144,35 @@ package object bio extends Syntax3 with Syntax2 {
   type Concurrent2[F[+_, +_]] = Concurrent3[Lambda[(`-R`, `+E`, `+A`) => F[E, A]]]
   type Async2[F[+_, +_]] = Async3[Lambda[(`-R`, `+E`, `+A`) => F[E, A]]]
   type Temporal2[F[+_, +_]] = Temporal3[Lambda[(`-R`, `+E`, `+A`) => F[E, A]]]
+
+  final class Panic1[F[+_], E](private val F: Panic3[Lambda[(`-R`, `+E`, `+A`) => F[A]]]) extends AnyVal {
+    @inline def map[A, B](r: F[A])(f: A => B): F[B] = F.map(r)(f)
+
+    @inline def as[A, B](r: F[A])(b: => B): F[B] = F.map(r)(_ => b)
+    @inline def void[A](r: F[A]): F[Unit] = F.void(r)
+
+    /** execute two operations in order, return result of second operation */
+    @inline def *>[A, B](r: F[A], f0: => F[B]): F[B] = F.*>(r, f0)
+
+    /** execute two operations in order, same as `*>`, but return result of first operation */
+    @inline def <*[A, B](r: F[A], f0: => F[B]): F[A] = F.<*(r, f0)
+
+    /** execute two operations in order, map their results */
+    @inline def map2[A, B, C](r: F[A], r2: => F[B])(f: (A, B) => C): F[C] = F.map2(r, r2)(f)
+
+    @inline def forever[A](r: F[A]): F[Nothing] = F.forever(r)
+
+    @inline def guarantee[A](r: F[A], cleanup: F[Unit]): F[A] = F.guarantee(r, cleanup)
+
+    @inline def orElse[A, A1 >: A](r: F[A], r2: => F[A1]): F[A1] = F.orElse(r, r2)
+
+    @inline def flatMap[A, B](r: F[A])(f0: A => F[B]): F[B] = F.flatMap(r)(f0)
+    @inline def tap[A, B](r: F[A], f0: A => F[Unit]): F[A] = F.tap(r, f0)
+
+    @inline def flatten[A](r: F[F[A]]): F[A] = F.flatten(r)
+
+    @inline def leftMap[A](r: F[A])(f: E => E): F[A] = F.leftMap(r)(f)
+  }
 
   type Fork2[F[+_, +_]] = Fork3[Lambda[(`-R`, `+E`, `+A`) => F[E, A]]]
 
