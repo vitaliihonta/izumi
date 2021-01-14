@@ -8,6 +8,17 @@ import izumi.distage.model.providers.Functoid
 import izumi.fundamentals.platform.language.Quirks._
 import izumi.logstage.api.IzLogger
 
+trait UntypedDockerContainer {
+  def id: ContainerId
+  def name: String
+  def hostName: String
+  def labels: Map[String, String]
+  def containerConfig: UntypedContainerConfig
+  def clientConfig: ClientConfig
+  def connectivity: ReportedContainerConnectivity
+  def availablePorts: VerifiedContainerConnectivity
+}
+
 final case class DockerContainer[Tag](
   id: ContainerId,
   name: String,
@@ -17,7 +28,7 @@ final case class DockerContainer[Tag](
   clientConfig: ClientConfig,
   connectivity: ReportedContainerConnectivity,
   availablePorts: VerifiedContainerConnectivity,
-) {
+) extends UntypedDockerContainer {
   override def toString: String = {
     val out = new StringBuilder()
     out.append(s"$name/${containerConfig.image}@${connectivity.dockerHost.getOrElse("localhost")}")

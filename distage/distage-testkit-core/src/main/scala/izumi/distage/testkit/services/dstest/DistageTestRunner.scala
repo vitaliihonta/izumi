@@ -269,6 +269,8 @@ class DistageTestRunner[F[_]: TagK: DefaultModule](
   ): F[Unit] = {
     // shared plan
     planCheck.verify(plan.shared)
+    println("shared:")
+    println(plan.shared.render())
     Injector.inherit(parentLocator).produceCustomF[F](plan.shared).use {
       sharedLocator =>
         // integration plan
@@ -444,6 +446,9 @@ class DistageTestRunner[F[_]: TagK: DefaultModule](
     planChecker.verify(newTestPlan.primary)
 
     // we are ready to run the test, finally
+
+    println("test:")
+    println(newTestPlan.primary.render())
     testInjector.produceCustomF[F](newTestPlan.shared).use {
       sharedLocator =>
         Injector.inherit(sharedLocator).produceCustomF[F](newTestPlan.side).use {

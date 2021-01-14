@@ -1,11 +1,10 @@
 package izumi.distage.docker
 
 import java.util.concurrent.TimeUnit
-
 import izumi.distage.config.codec.{DIConfigReader, PureconfigAutoDerive}
 import izumi.distage.docker.ContainerNetworkDef.ContainerNetwork
 import izumi.distage.docker.Docker.ClientConfig.parseReusePolicy
-import izumi.distage.docker.healthcheck.ContainerHealthCheck
+import izumi.distage.docker.healthcheck.{ContainerHealthCheck, UntypedContainerHealthCheck}
 import izumi.fundamentals.collections.nonempty.NonEmptyList
 import pureconfig.ConfigReader
 
@@ -72,6 +71,27 @@ object Docker {
     reusePolicy.killEnforced && globalReuse.killEnforced
   }
 
+  trait UntypedContainerConfig {
+    def image: String
+    def ports: Seq[DockerPort]
+    def name: Option[String]
+    def env: Map[String, String]
+    def cmd: Seq[String]
+    def entrypoint: Seq[String]
+    def cwd: Option[String]
+    def user: Option[String]
+    def mounts: Seq[Mount]
+    def networks: Set[ContainerNetwork[_]]
+    def reuse: DockerReusePolicy
+    def autoRemove: Boolean
+    def healthCheckInterval: FiniteDuration
+    def healthCheckMaxAttempts: Int
+    def pullTimeout: FiniteDuration
+    def portProbeTimeout: FiniteDuration
+    def alwaysPull: Boolean
+    def healthCheck: UntypedContainerHealthCheck
+  }
+
   /**
     * Parameters that define the behavior of this docker container,
     * Will be interpreted by [[izumi.distage.docker.ContainerResource]]
@@ -132,7 +152,7 @@ object Docker {
     healthCheck: ContainerHealthCheck[T] = ContainerHealthCheck.portCheck[T],
     portProbeTimeout: FiniteDuration = FiniteDuration(200, TimeUnit.MILLISECONDS),
     alwaysPull: Boolean = true,
-  ) {
+  ) extends UntypedContainerConfig {
     def tcpPorts: Set[DockerPort] = ports.collect { case t: DockerPort.TCPBase => t: DockerPort }.toSet
     def udpPorts: Set[DockerPort] = ports.collect { case t: DockerPort.UDPBase => t: DockerPort }.toSet
   }

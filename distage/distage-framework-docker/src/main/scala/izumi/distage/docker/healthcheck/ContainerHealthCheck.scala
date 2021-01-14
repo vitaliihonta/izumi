@@ -1,19 +1,27 @@
 package izumi.distage.docker.healthcheck
 
 import izumi.distage.docker.Docker._
-import izumi.distage.docker.DockerContainer
+import izumi.distage.docker.{DockerContainer, UntypedDockerContainer}
 import izumi.distage.docker.healthcheck.ContainerHealthCheck.HealthCheckResult
 import izumi.fundamentals.collections.nonempty.{NonEmptyList, NonEmptyMap}
 import izumi.logstage.api.IzLogger
 
-trait ContainerHealthCheck[Tag] {
+trait UntypedContainerHealthCheck {
+  def checkUnsafe(logger: IzLogger, container: UntypedDockerContainer): HealthCheckResult
+}
+
+trait ContainerHealthCheck[Tag] extends UntypedContainerHealthCheck {
   def check(logger: IzLogger, container: DockerContainer[Tag]): HealthCheckResult
 
+  override def checkUnsafe(logger: IzLogger, container: UntypedDockerContainer): HealthCheckResult = check(logger, container.asInstanceOf[DockerContainer[Tag]])
+
   final def ++(next: HealthCheckResult => ContainerHealthCheck[Tag]): ContainerHealthCheck[Tag] = this combine next
+
   final def combine(next: HealthCheckResult => ContainerHealthCheck[Tag]): ContainerHealthCheck[Tag] = {
     (logger: IzLogger, container: DockerContainer[Tag]) =>
       next(check(logger, container)).check(logger, container)
   }
+
   final def combineOnPorts(next: HealthCheckResult.AvailableOnPorts => ContainerHealthCheck[Tag]): ContainerHealthCheck[Tag] = {
     (logger: IzLogger, container: DockerContainer[Tag]) =>
       check(logger, container) match {
